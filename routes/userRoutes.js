@@ -4,12 +4,14 @@ import {
   deleteUser,
   updateUser,
   userLogin,
+  getAvater,
 } from "../controllers/userControllers.js";
 import { jwtVerify } from "../middlewares/jwt.js";
 
 export const userRouter = Router();
 
 userRouter
+  .get("/avatar/:id", getAvater)
   .post("/", addUser)
   .post("/login", userLogin)
   .patch("/:id", jwtVerify, updateUser)

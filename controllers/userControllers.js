@@ -16,6 +16,20 @@ export const addUser = async (req, res) => {
     res.json({ status: "error zod" });
   }
 };
+
+export const getAvater = async (req, res) => {
+  const { id } = req.params;
+  if (id) {
+    try {
+      const target = await User.findById(id);
+      res.json({ status: "ok", avatar: target.avatar });
+    } catch {
+      res.json({ status: "error" });
+    }
+  } else {
+    res.json({ status: "provide id" });
+  }
+};
 export const userLogin = async (req, res) => {
   const zodResponse = ZLoginObject.safeParse(req.body);
   if (zodResponse.success) {
