@@ -18,16 +18,12 @@ export const addUser = async (req, res) => {
 };
 
 export const getAvater = async (req, res) => {
-  const { id } = req.params;
-  if (id) {
-    try {
-      const target = await User.findById(id);
-      res.json({ status: "ok", avatar: target.avatar });
-    } catch {
-      res.json({ status: "error" });
-    }
-  } else {
-    res.json({ status: "provide id" });
+  const id = req.userId;
+  try {
+    const target = await User.findById(id);
+    res.json({ status: "ok", avatar: target.avatar });
+  } catch {
+    res.json({ status: "error" });
   }
 };
 export const userLogin = async (req, res) => {
