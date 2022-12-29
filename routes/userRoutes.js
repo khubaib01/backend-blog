@@ -11,7 +11,7 @@ import { jwtVerify } from "../middlewares/jwt.js";
 export const userRouter = Router();
 
 userRouter
-  .post("/avatar/:id", jwtVerify, getAvater)
+  .post("/avatar", jwtVerify, getAvater)
   .post("/", addUser)
   .post("/login", userLogin)
   .patch("/:id", jwtVerify, updateUser)
