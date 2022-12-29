@@ -20,7 +20,7 @@ export const addUser = async (req, res) => {
 export const getAvater = async (req, res) => {
   const id = req.userId;
   try {
-    const target = await User.findById(id);
+    const target = await User.findById(id.userId);
     res.json({ status: "ok", avatar: target.avatar });
   } catch {
     res.json({ status: "error" });
